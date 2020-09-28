@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Modulo 1 Fase 4</title>
+</head>
+<body>
+<script type="text/javascript">
+
+/*
+ *Creeu una variable on juntareu el nom i els cognoms (tot en una variable) i un altre on juntareu la
+ data de naixement separada per “/” (tot en una variable). Mostreu per consola les variables del nom
+ complet, la data de naixement i si l’any de naixement es de traspàs o no.
+
+
+ 
+ */
+	//Declaracion de variables
+	const BISIESTO= 1948;
+	var nom ="Daniel";
+	var cognom1 ="Arizu";
+	var cognom2 ="Pascual";
+	var nomComplet="";
+	var dataNeix="";
+	var dia="27";
+	var mes="11";
+	var any="1975";
+	var contador= 0;
+	var control = false;
+	
+	var nomComplet= nom + " " + cognom1 + " "+cognom2;
+	var dataNeix=dia + "/" + mes + "/" + any;
+	for (var i=BISIESTO;i<= any;i=i+4){
+			if (i==any){
+						control=true;
+			}
+	}
+	
+	document.writeln ("<br>Mi nombre es: " + nomComplet);
+	document.writeln ("<br>Mi fecha de nacimiento es: " + dataNeix);
+	console.log("<br>Mi fecha de nacimiento es: " + dataNeix);
+
+	if (control){
+		
+		document.write("<br>Tu año de nacimiento es bisiesto.");
+	}
+	else{
+		document.write("<br>Tu año de nacimiento no es bisiesto.");
+	}
+	
+	
+</script>
+<p> Este es el ejercicio 4 del moduo1</p>
+</body>
+</html>

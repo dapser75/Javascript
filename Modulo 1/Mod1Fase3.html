@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Modulo 1 Fase 3</title>
+</head>
+<body>
+<script type="text/javascript">
+
+/*
+ *− Partint de l’any 1948 heu de fer un bucle for i mostrar els anys de traspàs fins arriba al vostre any de
+ naixement.
+ − ATENCIO! Haureu de canviar el tipus de variable de l’any 1948 per poder modificar-la. 
+
+ − Creeu una variable bool que sera certa si l’any de naixement és de traspàs o falsa si no ho és.
+ − En cas de que la variable bool sigui certa, heu de mostrar per consola una frase on ho digui,
+
+ 
+ */
+	//Declaracion de variables
+	const BISIESTO= 1948;
+	var nacimiento= 0;
+	var contador= 0;
+	var control = false;
+	nacimiento = window.prompt("Introduce tu año de nacimiento:" );
+	for (var i=BISIESTO;i<= nacimiento;i=i+4){
+			document.write("<br>" + i);
+			if (i==nacimiento){
+						control=true;
+			}
+	}
+	if (control){
+		
+		document.writeln("<br>Tu año de nacimiento es bisiesto");
+	}
+	else{
+		document.writeln("<br>Tu año de nacimiento no es bisiesto");
+	}
+	
+	
+</script>
+<p> Este es el ejercicio 3 del moduo1</p>
+</body>
+</html>
