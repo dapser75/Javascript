@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Modulo 2 Fase 2</title>
+</head>
+<body>
+<script type="text/javascript">
+
+/*
+  *FASE 2
+  − Canvia la taula per una llista (List<Character>)
+  − Al bucle, si la lletra és una vocal imprimeix a la consola: ‘VOCAL’. Sinó, imprimeix: ‘CONSONTANT’.
+  − Si trobes un numero, mostra per pantalla: ‘Els noms de persones no contenen números!’.
+  */
+  
+    //Declaracion de variables
+	var nomComplet=  new Array(12);
+	var VOCALES = new Array ("a","e","i","o","u");
+	var tipoLetra= "";
+	var nom ="Daniel 1";
+	var control=true;
+
+	
+	colocarNombre();//Procedimiento para colocar el nombre en un array
+	compararLetras();//Procedimeinto para comparar las letras
+	
+	function compararLetras(){
+		//Bucle comparativo de vocales y consonante
+		for (var i=0;i< nomComplet.length;i++){
+	        
+			tipoLetra= " CONSONANTE";//control
+	      	control=true;
+	     	for (var n=0; n<5; n++){//Bucle para recorrer el array de vocales7
+	     		if (nomComplet[i].toLowerCase() == VOCALES[n]){//Comapartativa del nombre con el array de vocales,¡; con la funcion toLowerCase se 
+	     		                                               //controlan las mays y minusculas
+					document.write("<br>" + nomComplet[i]);
+					tipoLetra= "  VOCAL";
+					document.write(tipoLetra);
+					control = false;
+				}
+	     	}//Fin bucle 2º for (recorrer array vocales)
+	     	
+		 	if (control){ //En el caso que no sea una vocal
+		 		if (nomComplet[i]==" "){//Control de espacios
+		 			document.write("<br>" + nomComplet[i]);
+		 		}
+		 		else{
+		 			for (var j=0; j<10;j++)//Buscar nuemeros
+		 			{
+		 				if(nomComplet[i] ==j){
+			 				document.write("<br>" + nomComplet[i]);
+			 				document.write("  LOS NUMEROS NO ESTÁN PERMITIDOS EN EL NOMBRE.");
+			 				control=false;
+		 				}
+		 			}//Fin bucle for buscar numeros
+		 			if (control){
+						document.write("<br>" + nomComplet[i]);
+						document.write(tipoLetra);
+		 			}
+		 		}
+		 	}
+		}
+		
+	}	//Fin bucle comparativo vocales && consontante
+	
+	 //Funcion-Bucle para colocar el nombre en el array
+    function colocarNombre(){
+		for (var i=0; i< nom.length; i++ ){ //Colocar el nombre introducido en un array de CHAR.
+			nomComplet[i]=nom.charAt(i);
+		}
+    }
+    
+	
+</script>
+<p> Este es el ejercicio 2 del moduo 2</p>
+</body>
+</html>

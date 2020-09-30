@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Modulo 2 Fase 2</title>
+</head>
+<body>
+<script type="text/javascript">
+
+/*
+ FASE 3
+− Emmagatzemar en un Map tant les lletres de la llista com el nombre de vegades que apareixen. 
+  */
+  
+    var nomComplet=  new Array();
+	var nom ="Daniel Arizu";//String inicial con el que trabajaremos
+	var control=true;
+	var mapNombre = new Map();
+	
+	document.write("Nombre inicial con el que trabajamos: " +  nom + "<br>");
+	colocarenArray(); //Llamada a la funcion para colocar el string inicial en un array de Char
+	comprobarLetras(); //Llamada al procedimiento para mostrar letras repetidas
+	/*
+	for (var i=0; i<mapNombre.size();i++){
+       	document.write("valor i bucle for final: "+i);
+		document.write(mapNombre.entries(i));
+    }*/
+
+	function comprobarLetras(){
+		var aux; //variable auxiliar
+              var control;
+		for (var i=0; i<nomComplet.length; i++){
+                document.write("<br>" + nomComplet[i]);
+            	control=mapNombre.indexOf(nomComplet[i]);//se comprueba si una letra ya está en el map
+            	document.write("hols");
+			if (control 1= '-1'){
+                document.write(mapNombre.entries("hola"));
+				aux = mapNombre.keys(nomComplet[i]) +1;
+				mapNombre=mapNombre.set(aux, nomcomplet[i]);
+			}
+			else{
+				document.write(mapNombre.entries("adios"));
+				mapNombre=mapNombre.set(1, nomComplet[i]);
+                          
+			}
+		}//fin for
+	}//fin funcion
+	
+	
+	//Funcion que coloca el nombre (string) en un array de caracteres
+	function colocarenArray(){
+		for (var i=0; i< nom.length; i++ ){ 
+			nomComplet[i]=nom.charAt(i);
+		}
+	}
+  
+	
+</script>
+<p> Este es el ejercicio 3 del moduo 2</p>
+</body>
+</html>

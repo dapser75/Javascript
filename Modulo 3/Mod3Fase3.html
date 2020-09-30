@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Modulo 3 Ejercicio 2</title>
+</head>
+<body>
+<script type="text/javascript">
+/*
+ * 
+ FASE 3
+ - Cambieu les vocals “a” dels noms de les ciutats per el numero 4 i guardeu els noms modificats en un nou
+ array(ArrayCiutatsModificades).
+ - Mostreu per consola l’array modificat i ordenat per ordre alfabetic
+ */
+
+
+//Declaracion de variables 
+var ciut1="";
+var ciut2="";
+var ciut3="";
+var ciut4="";
+var ciut5="";
+var ciut6="";
+
+var nomCiudades = new Array();
+
+
+
+obtenerDatos();
+nomCiudades=ordenarArray(nomCiudades);
+mostrarArray(nomCiudades);
+cambiarLetras();
+mostrarArray(nomCiudades);
+
+
+function cambiarLetras(){
+	var aux="";
+	for (var i=0; i<nomCiudades.length;i++){
+		aux=nomCiudades[i];
+		for(n=0;n<aux.length;n++){
+             aux=aux.replace('a',4);
+         }
+         nomCiudades[i]=aux;
+	
+	}
+
+	
+}
+
+
+function ordenarArray(city){
+	var aux="";
+	var aux2="";
+	for (var i=0;i<city.length;i++){
+		for(var n=i+1;n<city.length;n++){
+			aux =city[i];
+			aux2=city[n];
+			if (aux.localeCompare(aux2) >=0){
+				city[i]=city[n];
+				city[n]=aux;
+			}//fin if
+		}//fin 2o for
+	}//fin 1er for
+	return(city);
+}
+
+
+function mostrarArray(city){
+	for (var i=0; i< city.length;i++){
+		document.write("<br>" + city[i]);
+	
+	}//fin for
+
+
+}//fin funcion
+  
+
+
+//Funcion de entrada de datos y almacenamiento en el array
+function obtenerDatos(){
+	ciut1=prompt("Introduce ciudad 1:" , "Barcelona");
+	ciut2=prompt("Introduce ciudad 2:" , "Madrid");
+	ciut3=prompt("Introduce ciudad 3:" , "Valencia");
+    ciut4=prompt("Introduce ciudad 4:" , "Malaga");
+	ciut5=prompt("Introduce ciudad 5:" , "Cadis");
+	ciut6=prompt("Introduce ciudad 6:" , "Santander");
+
+	nomCiudades[0]=ciut1;//LLenar el array
+	nomCiudades[1]=ciut2;
+	nomCiudades[2]=ciut3;
+	nomCiudades[3]=ciut4;
+	nomCiudades[4]=ciut5;
+	nomCiudades[5]=ciut6;
+
+}//fin funcion
+
+
+
+</script>
+
+</body>
+</html>

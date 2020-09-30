@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Modulo 3 Ejercicio 2</title>
+</head>
+<body>
+<script type="text/javascript">
+/*
+ * 
+ FASE 4
+ - Creeu un nou array per cada una de les ciutats que tenim. La mida dels nous arrays sera la llargada de
+ cada string ( string nomCiutat.Length).
+ - Ompliu els nous arrays lletra per lletra.
+ - Mostreu per consola els nous arrays amb els noms invertits (Ex: Barcelona - anolecraB).
+ */
+
+
+//Declaracion de variables 
+var ciut1="";
+var ciut2="";
+var ciut3="";
+var ciut4="";
+var ciut5="";
+var ciut6="";
+
+var city1 = new Array();
+var city2 = new Array();
+var city3 = new Array();
+var city4 = new Array();
+var city5 = new Array();
+var city6 = new Array();
+
+
+obtenerDatos();
+
+mostrarResultado();
+
+function mostrarResultado(){
+	mostrarArray(city1);
+	mostrarArrayinvertido(city1);
+	mostrarArray(city2);
+	mostrarArrayinvertido(city2);
+	mostrarArray(city3);
+	mostrarArrayinvertido(city3);
+	mostrarArray(city4);
+	mostrarArrayinvertido(city4);
+	mostrarArray(city5);
+	mostrarArrayinvertido(city5);
+	mostrarArray(city6);
+	mostrarArrayinvertido(city6);
+}
+
+function colocarNombre(nom){
+
+	var nomComplet=new Array();
+	for (var i=0; i< nom.length; i++ ){ //Colocar el nombre introducido en un array de CHAR.
+		nomComplet[i]=nom.charAt(i);
+	}
+	return(nomComplet);
+}
+
+function mostrarArray(city){
+	document.write("<br>");
+	for (var i=0; i< city.length;i++){
+		document.write(city[i]);
+	
+	}//fin for
+
+
+}//fin funcion
+  
+function mostrarArrayinvertido(city){
+	document.write("<br>");
+	for (var i=city.length-1;i>=0;i--){
+		document.write(city[i]);
+	
+	}//fin for
+
+
+}//fin funcion
+  
+
+
+//Funcion de entrada de datos y almacenamiento en el array
+function obtenerDatos(){
+	ciut1=prompt("Introduce ciudad 1:" , "Barcelona");
+	ciut2=prompt("Introduce ciudad 2:" , "Madrid");
+	ciut3=prompt("Introduce ciudad 3:" , "Valencia");
+        ciut4=prompt("Introduce ciudad 4:" , "Malaga");
+	ciut5=prompt("Introduce ciudad 5:" , "Cadis");
+	ciut6=prompt("Introduce ciudad 6:" , "Santander");
+
+	city1=colocarNombre(ciut1);
+	city2=colocarNombre(ciut2);
+	city3=colocarNombre(ciut3);
+	city4=colocarNombre(ciut4);
+	city5=colocarNombre(ciut5);
+	city6=colocarNombre(ciut6);
+	
+
+}//fin funcion
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Modulo 2 Fase 2</title>
+</head>
+<body>
+<script type="text/javascript">
+
+/*
+ FASE 4
+− Crea una altra llista amb el teu cognom on cada posició correspongui a una lletra.
+− Fusiona les dues llistes en una sola. A més, afegeix una posició amb un espai buit entre la primera i la
+segona. És a dir, partim de la llista name i surname i al acabar l’execució només tindrem una que es
+dirà fullName.
+  */
+  
+//Declaracion de variables
+	var nomComplet=  new Array();
+	var nom ="Daniel";//String inicial con el que trabajaremos
+	var cognom="Arizu"
+	
+	valoresIniciales(); //Procedimiento para mostrar los datos iniciales.
+	concadenarLista(nom); //Llamamos a la funcion para colocar el nombre en una lista
+    concadenarLista(cognom);//Llamamos a la funcion para colocar el apellido en una lista
+	mostrarResultado(); //Procedimiento para mostrar el resultado
+	
+
+	function mostrarResultado(){
+		document.write("<br>");
+		for (var i=0; i<nomComplet.length;i++){
+			document.write(nomComplet[i]);
+		}
+	}
+
+	function concadenarLista(aux){
+        var j=nomComplet.length;
+        for (var i=0;i<aux.length;i++){
+			j=nomComplet.length
+			nomComplet[j]=aux.charAt(i);
+			j++;
+			nomComplet[j]=' ';    //Añadir el espacio entre letras               
+         }
+	}
+	
+	function valoresIniciales(){
+		document.write("<br>Este es el nombre incial: " + nom);	
+		document.write("<br>Este es el apellido incial: " + cognom);
+		
+	}
+
+		
+	
+
+	
+</script>
+<p> Este es el ejercicio 3 del moduo 2</p>
+</body>
+</html>
