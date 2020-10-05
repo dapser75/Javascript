@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ejercicio 2 Modulo 4</title>
+</head>
+<body>
+<script type="text/javascript">
+
+/*FASE 2
+− Amb un bucle for haurem d’omplir els dos arrays anteriorment creats. Afegirem el nom del plat i
+després el preu. Pots fer us de diccionaris de dades(Java HasMap)
+− Un cop plens els dos arrays haurem de mostrar-los i preguntar que es vol per menjar, guardarem la
+informació en una List fent servir un bucle while.
+− Haurem de preguntar si es vol seguir demanant menjar. Podeu fer servir el sistema (1:Si / 0:No),
+per tant haureu de crear un altre variable int per guardar la informació.
+
+
+*/
+var b5 = 5;
+var b10 = 10;
+var b20 = 20;
+var b50 = 50;
+var b100= 100;
+var b200= 200;
+var b500= 500;
+var platos = new Array();
+var precioPlato = new Array();
+var pedido=new Array();
+generarMenu();
+
+if(platos.length == 0){
+	document.write("<br>RESTAURANTE CERRADO");
+	console.log("RESTAURANTE CERRADO ");
+}
+else{
+	document.write("<br>BIENVENIDO AL RESTAURANTE");
+	console.log("BIENVENIDO AL RESTAURANTE");
+	mostrarMenu();
+	pedirPlatos();
+}
+
+
+//funcion en la que controlaremos si tenemos que continuar pidiendo platos
+function pedirPlatos(){
+	var salir=true //variable en la que controlaremos si pedimos mas platos
+	var control=0;
+	do{
+		almacenarPedido();	
+		do{//bucle para controlar que se introduzca un 0 o un 1
+			control=prompt("Quieres seguir pidiendo platos (1:SI/0:NO): ", "1");
+			if (control!=0 || control !=1){
+				prompt("Entrada de caracteres no valida");
+			}
+		}while (control!=0 && control !=1);
+		
+	}while(!salir)
+}
+
+function almacenarPedido(){
+	var i=pedido.length++; //variable para insertar al final del array los paltos pedidos
+	var control1=true;
+	var aux; //variable temporal para guardar el plato que hemos pedido
+	do{
+		pedido[i]=prompt("Introduce el numero de plato que deseas consumir:");
+		if (pedido[i]){
+			control=false;		
+		}
+		else{
+			pedido[i]=aux;
+			control=true;
+		}
+		}while(!control1);
+	
+}//fin funcion
+
+
+function mostrarMenu(){
+	var aux=0;
+	document.write("<br>ESTE ES NUESTRO MENU:");//  ////////////////////////////////////////
+	document.write("<br>ESTE ES NUESTRO MENU:");
+	for (var i=0; i< platos.length; i++){
+		aux= i+1;
+		console.log("Plato numero: " + aux + ".- " + platos[i] + ". Importe: " + precioPlato[i] + "€.");
+		document.write("<br>Plato numero: " + aux + ".- " + platos[i] + ". Importe: " + precioPlato[i] + "€.");
+	}	
+}
+
+//Funcion para verificar que los valores introducidos como numeros sean numeros.
+//En el caso que sea un numero entero retorna un TRUE en caso contrario un FALSE
+
+function comprobarImporte(num){
+	if (isNaN(num)){
+       document.write("<br>El valor introducido no es válido.");
+       return (false);
+    } else {
+        if (num % 1 == 0) {//Verificar que el numero es un entero.
+            return(true);
+        } else {
+        	return(false);;
+        }
+    }
+}
+
+//Funcion creada para la introducción del menu
+function generarMenu(){
+	var estado1=true;//Variable para controlar la entrada de platos
+	var estado2=true;//Variable para controlar que el precio sea un numero
+	var i=0;
+	var aux="";
+	do{
+		aux=prompt("Introduce el nombre del plato: ");
+		console.log(aux);
+		//document.write(platos[i]);
+		if (aux==null || aux==""){ //en caso que no se introduzca nada es que no queremos introducir más platos en el menu
+			document.write("<br>MENU COMPLETADO.");
+			console.log("MENU COMPLETADO.");
+			platos[i]=aux;
+			estado1!=false;
+			break;
+		}
+		else{
+			platos[i]=aux;
+			aux="";
+			do{
+				aux=prompt("Introduce el precio del plato: ");
+				estado2=comprobarImporte(aux);
+				if (!estado2){
+					document.write("<br>EL IMPORTE DEL PLATO TIENE QUE SER UN NUMERO ENTERO!!");
+					console.log("EL IMPORTE DEL PLATO TIENE QUE SER UN NUMERO ENTERO!!");
+				}
+				else{
+					precioPlato[i]=aux;
+				}
+				/*
+				aux=prompt("Introduce el precio del plato: ");
+				estado3=comprobarImporte(aux)
+				if (aux==null || aux==""){//control para que se introduzcan datos
+					document.write("EL IMPORTE DEL PLATO NO PUEDE SER NULO!!");
+					estado3=false;
+				*/
+			}while(!estado2);//fin 2º while
+			i++;
+		}
+	}while(!estado1);//fin 1er while
+}//fin funcion
+
+</script>
+</body>
+</html>

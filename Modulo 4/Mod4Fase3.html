@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ejercicio 3 Modulo 4</title>
+</head>
+<body>
+<script type="text/javascript">
+
+/*FASE 3
+− Un cop hem acabat de demanar el menjar, haurem de comparar la llista amb l’array que hem fet al
+principi. En el cas que la informació que hem introduït a la List coincideixi amb la del array, haurem
+de sumar el preu del producte demanat; en el cas contrari haurem de mostrar un missatge que digui
+que el producte que hem demanat no existeix.
+*/
+var b5 = 5;
+var b10 = 10;
+var b20 = 20;
+var b50 = 50;
+var b100= 100;
+var b200= 200;
+var b500= 500;
+var platos = new Array();
+var precioPlato = new Array();
+var pedido=new Array();
+var cuenta=0;
+
+generarMenu();
+
+if(platos.length == 0){ //Control para verificar que hay menu
+	document.write("<br>RESTAURANTE CERRADO ");
+	console.log("RESTAURANTE CERRADO ");
+	
+}
+else{
+	document.write("<br>BIENVENIDO AL RESTAURANTE");
+	console.log("BIENVENIDO AL RESTAURANTE");
+	mostrarMenu();
+	pedirPlatos();
+	mostrarPedido();
+	calcularPago();
+}
+
+
+//Funcion para calcular los billetes con los que se debe pagar. Para ello se recorre el  bucle y se van restando los billetes
+//del importe total. Se guarda el  billete en un array que posteriormente se recorre para mostrar los billetes necesarios.
+function calcularPago(){
+	var i=0;
+	var coleccionBilletes = new Array();
+	var acumulado=cuenta;
+	do{
+		if (acumulado>=b500) {
+				acumulado-=b500;
+				coleccionBilletes[i]=b500;
+		}else if (acumulado>=b200) {
+			acumulado-=b200;
+			coleccionBilletes[i]=b200;
+		}else if (acumulado>=b100) {
+			acumulado-=b100;
+			coleccionBilletes[i]=b100;
+		}else if (acumulado>=b50) {
+			acumulado-=b50;
+			coleccionBilletes[i]=b50;
+		}else if (acumulado>=b20) {
+			acumulado-=b20;
+			coleccionBilletes[i]=b20;
+		}else if (acumulado>=b10) {
+			acumulado-=b10;
+			coleccionBilletes[i]=b10;
+		}else if (acumulado>=b5) {
+			acumulado-=b5;
+			coleccionBilletes[i]=b5;
+		}else {
+			acumulado-=b5;
+			coleccionBilletes[i]=b5;
+		}
+		i++;
+	}while(acumulado>0);
+	document.write("<br>Estos con los billetes con los que tienes que pagar:" );	
+	console.log("Estos con los billetes con los que tienes que pagar:" );
+	for (var i=0; i<coleccionBilletes.length;i++) {
+		document.write("<br>" + coleccionBilletes[i] + "€" );
+		console.log("" + coleccionBilletes[i] + "€" );
+	}
+
+}
+
+
+
+//Función para mostrar el pedido realizado.
+function mostrarPedido(){
+	var n=0;
+	document.write("<br>ESTE ES TU PEDIDO:");
+	console.log("ESTE ES TU PEDIDO:");
+	
+	for (var i=0; i<pedido.length;i++){
+		n=pedido[i]-1;
+		cuenta= cuenta + parseInt(precioPlato[n]);
+		document.write("<br>Plato nº " + pedido[i] +": " + platos[n] + " precio: " + precioPlato[n] + "€");
+		console.log("<br>Plato nº " + pedido[i] +": " + platos[n] + " precio: " + precioPlato[n] + "€");
+	}
+	document.write("<br>IMPORTE TOTAL DEL PEDIDO: " + cuenta);
+	console.log("<br>IMPORTE TOTAL DEL PEDIDO: " + cuenta);
+}
+
+
+
+
+//Funcion en la que controlaremos si tenemos que continuar pidiendo platos
+function pedirPlatos(){
+	var salir=true; //variable en la que controlaremos si pedimos mas platos
+	var sino;
+	do{
+		almacenarPedido();
+		do{//bucle para controlar que se introduzca un 0 o un 1
+			sino=prompt("Quieres seguir pidiendo platos (1:SI/0:NO):");
+			if (sino!= 0 && sino != 1){
+				prompt("Entrada de caracteres no valida");
+			}
+			else if (sino == 0){
+				salir=true
+			}
+			else{
+				salir=false;
+			}
+		}while (sino!=0 && sino !=1);
+	}while(!salir);
+}
+
+//Función para verificar que el plato está en el menú
+function comprobarPlato(numplato){
+	if (numplato>platos.length || numplato==0){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+//Función para almacenar el pedido de platos
+function almacenarPedido(){
+	var i=pedido.length; //variable para insertar al final del array los paltos pedidos
+	var control=true;
+	var aux; //variable temporal para guardar el plato que hemos pedido
+	do{
+		aux=prompt("Introduce el numero de plato que deseas consumir:");
+	    control=comprobarEntero(aux);
+		if (!control){
+			document.write("<br>EL NUMERO DE PLATO TIENE QUE SER UN NUMERO!!")
+			console.log("EL NUMERO DE PLATO TIENE QUE SER UN NUMERO!!")
+			}
+		else{
+			control=comprobarPlato(aux);
+			if (!control){
+				document.write("<br> EL PLATO SOLICITADO NO ESTÁ EN EL MENU");
+				console.log("EL PLATO SOLICITADO NO ESTÁ EN EL MENU");
+			}
+			else{
+				pedido[i]=aux;//almacenamos el plato pedido en un Array
+				i++;
+			}
+		}
+	}while(!control);
+}//fin funcion
+
+//Función en la que se muestra el menu del restaurante
+function mostrarMenu(){
+	var aux=0;
+	document.write("<br>ESTE ES NUESTRO MENU:");
+	document.write("<br>ESTE ES NUESTRO MENU:");
+	for (var i=0; i< platos.length; i++){
+		aux= i+1;
+		console.log("<br>Plato numero: " + aux + ".- " + platos[i] + ". Importe: " + precioPlato[i] + "€.");
+		document.write("Plato numero: " + aux + ".- " + platos[i] + ". Importe: " + precioPlato[i] + "€.");
+	}
+}
+
+//Funcion para verificar que los valores introducidos como numeros sean numeros.
+//En el caso que sea un numero entero retorna un TRUE en caso contrario un FALSE
+function comprobarEntero(num){
+	if (isNaN(num)){
+        return (false);
+    } else {
+        if (num % 1 == 0) {//Verificar que el numero es un entero.
+            return(true);
+        } else {
+        	return(false);;
+        }
+    }
+}
+
+//Funcion creada para la introducción del menu
+function generarMenu(){
+	var estado1=true;//Variable para controlar la entrada de platos
+	var estado2=true;//Variable para controlar que el precio sea un numero
+	var i=0;
+	var aux="";
+	do{
+		aux=prompt("Introduce el nombre del plato: ");
+		console.log(aux);
+		if (aux==null || aux==""){ //en caso que no se introduzca nada es que no queremos introducir más platos en el menu
+			document.write("<br>MENU COMPLETADO.");
+			console.log("MENU COMPLETADO.");
+			estado1=false;
+		}
+		else{
+			platos[i]=aux;
+			aux="";
+			do{
+				aux=prompt("Introduce el precio del plato: ");
+				estado2=comprobarEntero(aux);
+				if (!estado2){
+					document.write("<br>EL IMPORTE DEL PLATO TIENE QUE SER UN NUMERO ENTERO!!");
+					console.log("EL IMPORTE DEL PLATO TIENE QUE SER UN NUMERO ENTERO!!");
+				}
+				else{
+					precioPlato[i]=aux;
+				}
+			}while(!estado2);//fin 2º while
+			i++;
+		}
+	}while(estado1);//fin 1er while
+}//fin funcion
+
+</script>
+</body>
+</html>
